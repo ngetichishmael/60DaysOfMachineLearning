@@ -1,4 +1,4 @@
-### 60 Days of Data Science and Machine Learning
+### 60 Days of Machine Learning
 
 #### **Week 1: Python Basics**
 
