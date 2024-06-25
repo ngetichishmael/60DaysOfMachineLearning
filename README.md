@@ -2,30 +2,30 @@
 
 #### **Week 1: Python Basics**
 
-**Day 1: Python Basics - Part 1**
+**Day 1: Python Basics - Part 1** ✅️ 
 - Learn about data types: integers, floats, strings, and booleans.
 - Understand variables and assignment.
 - Work with basic arithmetic and operators.
 - Use comparison and logical operators.
 
-**Day 2: Python Basics - Part 2**
+**Day 2: Python Basics - Part 2** ✅️ 
 - Explore lists, tuples, and sets.
 - Learn about dictionaries and how to use them.
 - Perform basic operations with these data structures.
 
-**Day 3: Python Basics - Part 3**
+**Day 3: Python Basics - Part 3** ✅️ 
 - Understand control flow: if, else, elif statements.
 - Learn about loops: for and while loops.
 - Explore break and continue statements.
 - Introduction to functions and their definitions.
 
-**Day 4: Intermediate Python - Part 1**
+**Day 4: Intermediate Python - Part 1** ✅️ 
 - Learn about first-class functions and closures.
 - Understand global and non-local variables.
 - Explore the use of magic methods and tuple unpacking.
 - Learn about static variables and methods.
 
-**Day 5: Intermediate Python - Part 2**
+**Day 5: Intermediate Python - Part 2**✅️ 
 - Dive into lambda functions.
 - Explore inheritance and polymorphism.
 - Learn about error and exception handling.
