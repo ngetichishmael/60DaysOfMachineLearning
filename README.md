@@ -47,34 +47,34 @@
 - Learn about probability and distributions.
 - Introduction to hypothesis testing.
 
-**Day 9: Mathematics for ML - Part 1**
+**Day 9: Mathematics for ML - Part 1** ✅️ 
 - Learn linear algebra basics: vectors, matrices, and operations.
 - Understand eigenvalues and eigenvectors.
 
-**Day 10: Mathematics for ML - Part 2**
+**Day 10: Mathematics for ML - Part 2** ✅️ 
 - Explore calculus: derivatives and integrals.
 - Understand the concept of gradient descent.
 
 #### **Week 3: Data Handling with Python**
 
-**Day 11: Pandas - Part 1**
+**Day 11: Pandas - Part 1** ✅️ 
 - Learn the basics of Pandas: Series and DataFrame.
 - Understand data indexing and selection.
 - Perform data manipulation and cleaning.
 
-**Day 12: Pandas - Part 2**
+**Day 12: Pandas - Part 2** ✅️ 
 - Explore advanced data operations: merging, joining, and concatenation.
 - Learn about groupby operations and pivot tables.
 
-**Day 13: Numpy Basics**
+**Day 13: Numpy Basics** ✅️ 
 - Understand Numpy arrays and their operations.
 - Perform mathematical and statistical operations with Numpy.
 
-**Day 14: Data Preprocessing - Part 1**
+**Day 14: Data Preprocessing - Part 1** ✅️ 
 - Learn about data cleaning and handling missing values.
 - Perform feature scaling and normalization.
 
-**Day 15: Data Preprocessing - Part 2**
+**Day 15: Data Preprocessing - Part 2** ✅️ 
 - Explore data transformation techniques.
 - Learn about feature engineering and selection.
 
