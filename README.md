@@ -273,3 +273,67 @@
 **Day 60: Final Project - Part 3**
 - Present your final project.
 - Create a project report and share your findings.
+
+
+# Machine Learning Algorithms
+## Supervised Learning
+- **Regression**
+  - Linear Regression ✅ 
+  - Polynomial Regression ✅ 
+  - Ridge/Lasso Regression ✅ 
+- **Classification**
+  - Logistic Regression ✅ 
+  - Naive Bayes
+  - K-NN ✅ 
+  - SVM ✅ 
+  - Decision Trees ✅ 
+
+## Unsupervised Learning
+- **Clustering**
+  - K-Means✅ 
+  - Mean Shift
+  - DBSCAN
+  - Agglomerative
+  - Fuzzy C-Means
+- **Dimensionality Reduction**
+  - PCA
+  - LDA
+  - t-SNE
+  - SVD
+  - LSA
+- **Association Rule Learning**
+  - Apriori
+  - FP Growth
+  - Eclat
+
+## Ensemble Learning
+- **Bagging**
+  - Random Forest
+- **Boosting**
+  - AdaBoost
+  - Gradient Boosting
+  - XGBoost
+  - LightGBM
+  - CatBoost
+- **Stacking**
+
+## Neural Networks and Deep Learning
+- **Perceptrons**
+- **Autoencoders**
+- **Convolutional Neural Networks (CNNs)**
+  - DCNN
+- **Recurrent Neural Networks (RNNs)**
+  - LSTM
+  - GRU
+  - seq2seq
+- **Generative Adversarial Networks (GAN)**
+- **Deep Belief Networks (DBN)**
+- **Long Short-Term Memory (LSTM)**
+- **Gated Recurrent Unit (GRU)**
+
+## Reinforcement Learning
+- **Q-Learning**
+- **SARSA**
+- **Deep Q-Networks (DQN)**
+- **A3C**
+- **Genetic Algorithm**
