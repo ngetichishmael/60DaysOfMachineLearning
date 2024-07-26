@@ -278,7 +278,7 @@
 # Machine Learning Algorithms
 ## Supervised Learning
 - **Regression**
-  - Linear Regression ✅ 
+  - Linear Regression
   - Polynomial Regression ✅ 
   - Ridge/Lasso Regression ✅ 
 - **Classification**
