@@ -279,7 +279,7 @@
 ## Supervised Learning
 - **Regression**
   - Linear Regression ✅ 
-  - Polynomial Regression 
+  - Polynomial Regression ✅
   - Ridge/Lasso Regression
 - **Classification**
   - Logistic Regression ✅ 
