@@ -280,7 +280,7 @@
 - **Regression**
   - Linear Regression ✅ 
   - Polynomial Regression ✅
-  - Ridge/Lasso Regression
+  - Ridge/Lasso Regression ✅
 - **Classification**
   - Logistic Regression ✅ 
   - Naive Bayes
