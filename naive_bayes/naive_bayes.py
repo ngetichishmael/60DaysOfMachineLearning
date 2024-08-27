@@ -143,7 +143,7 @@ def build_and_evaluate_model(X_train, X_test, y_train, y_test):
 
     Returns:
         model (GaussianNB): the trained Gaussian Naive Bayes model
-        evaluation_results (dict): A dictionary containing the evaluation metrics
+        evaluation_results (dict): dictionary containing evaluation metrics
     """
     
     # initialize the Gaussian Naive Bayes model
