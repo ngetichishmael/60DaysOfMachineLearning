@@ -2,7 +2,6 @@
 """Naive bayes implementation using scikit-learn"""
 
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
@@ -59,17 +58,14 @@ def load_data(file_path):
         # Return None if there's an error
         return None
 
-def wrangle(df, col, exclude_col=None, skew_threshold=0.75):
+def wrangle(df, col):
     """
     Preprocesses the DataFrame by:
-    - transforming the `purpose` column into categorical using get_dummies,
-    - applying transformations to features with high skewness to
-    normalize distributions
+    - transforming the `purpose` column into categorical using get_dummies
 
     Args:
         df (pd.DataFrame): The DataFrame to preprocess
         col (str): The column to transform into categorical using get_dummies
-        skew_threshold (float): apply transformation if skewness is above this
 
     Returns:
     pd.DataFrame: The preprocessed DataFrame.
@@ -81,27 +77,6 @@ def wrangle(df, col, exclude_col=None, skew_threshold=0.75):
     
     # encode `purpose` using get_dummies into a categorical column
     df = pd.get_dummies(df, columns=[col], drop_first=True)
-
-    # Check for skewness in numerical columns
-    numeric_columns = df.select_dtypes(include=[np.number]).columns
-
-    # exclude the target column - it's numerical
-    if exclude_col and exclude_col in numeric_columns:
-        numeric_columns = numeric_columns.drop(exclude_col)
-
-    skewness = df[numeric_columns].skew()
-
-    # Apply transformations to features with high skewness
-    for column in skewness.index:
-        if skewness[column] > skew_threshold:
-            # Apply log transformation if all values are positive
-            if df[column].min() > 0:
-                df[column] = np.log(df[column])
-                print(f"'{column}' log transformed ({skewness[column]:.2f})")
-            else:
-                # Apply square root transformation if values include zero or negative
-                df[column] = np.sqrt(df[column] - df[column].min())
-                print(f"'{column}' square root transformed ({skewness[column]:.2f})")
 
     return df
 
@@ -176,13 +151,13 @@ def build_and_evaluate_model(X_train, X_test, y_train, y_test):
     # predict the target values for the test data
     y_pred = model.predict(X_test)
 
-    # Calculate evaluation metrics
+    # calculate evaluation metrics
     accuracy = accuracy_score(y_test, y_pred)
     conf_matrix = confusion_matrix(y_test, y_pred)
     class_report = classification_report(y_test, y_pred)
     f1 = f1_score(y_test, y_pred, average='weighted')
 
-    # Store evaluation results in a dictionary
+    # store evaluation results in a dictionary
     evaluation_results = {
         'accuracy_score': accuracy,
         'confusion_matrix': conf_matrix,
@@ -196,9 +171,20 @@ def build_and_evaluate_model(X_train, X_test, y_train, y_test):
 # Call the functions
 df = load_data("../dataset/loan_data.csv")
 
-preprocessed_df = wrangle(df, col="purpose", exclude_col="not.fully.paid")
+preprocessed_df = wrangle(df, col="purpose")
 
+# Splitting the data
 X_train_scaled, X_test_scaled, y_train, y_test = split_and_scale(preprocessed_df, target_column='not.fully.paid')
+print(X_train_scaled.shape)
+print(X_test_scaled.shape)
+print(y_train.shape)
+print(y_test.shape)
 
+# Model and evaluation
 model, results = build_and_evaluate_model(X_train_scaled, X_test_scaled, y_train, y_test)
-print(results)
+print(f"Accuracy Score: {results['accuracy_score']:.4f}")
+print("\nConfusion Matrix:")
+print(results['confusion_matrix'])
+print("\nClassification Report:")
+print(results['classification_report'])
+print(f"F1 Score: {results['f1_score']:.4f}")
