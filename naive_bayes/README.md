@@ -80,9 +80,9 @@ Prior probabilities:
 Posterior probabilities:
 | Whether  | No | Yes | Posterior Probability for No | Posterior Probability for Yes |
 |----------|----|-----|------------------------------|-------------------------------|
-| Overcast | 0  | 4   | $\frac{0}{5}$ = 0                      | $\frac{4}{9}$ = 0.44                    |
-| Sunny    | 3  | 2   | $\frac{2}{5}$ = 0.4                    | $\frac{3}{9}$ = 0.33                    |
-| Rainy    | 2  | 3   | $\frac{2}{5}$ = 0.4                    | $\frac{2}{9}$ = 0.22                    |
+| Overcast | 0  | 4   | $\frac{0}{5}$ = 0            | $\frac{4}{9}$ = 0.44          |
+| Sunny    | 3  | 2   | $\frac{3}{5}$ = 0.6          | $\frac{2}{9}$ =  0.22         |
+| Rainy    | 2  | 3   | $\frac{2}{5}$ = 0.4          | $\frac{2}{9}$ = 0.22          |
 | **Total**| 5  | 9   |                              |                               |
 
 1. Calculate the probability of playing when the whether is overcast:
