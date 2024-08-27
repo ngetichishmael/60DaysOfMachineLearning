@@ -173,40 +173,41 @@ def build_and_evaluate_model(X_train, X_test, y_train, y_test):
     return model, evaluation_results
 
 """Call the functions"""
-# load the data
-df, metadata = load_data("../../dataset/loan_data.csv")
-if df is not None:
-    print("Shape of the DataFrame:", metadata['shape'])
-    print("\nMissing values in each column:")
-    print(metadata['missing_values'])
-    print("\nData types of each column:")
-    print(metadata['data_types'])
-    print("\nDataFrame Info:")
-    print(metadata['data_info'])
-print("--------------------------------")
+if __name__ == "__main__":
+    # load the data
+    df, metadata = load_data("../../dataset/loan_data.csv")
+    if df is not None:
+        print("Shape of the DataFrame:", metadata['shape'])
+        print("\nMissing values in each column:")
+        print(metadata['missing_values'])
+        print("\nData types of each column:")
+        print(metadata['data_types'])
+        print("\nDataFrame Info:")
+        print(metadata['data_info'])
+    print("--------------------------------")
 
-# preprocess df
-preprocessed_df = wrangle(df, col="purpose")
+    # preprocess df
+    preprocessed_df = wrangle(df, col="purpose")
 
-# Splitting the data
-X_train_scaled, X_test_scaled, y_train, y_test = \
-    split_and_scale(preprocessed_df, target_column='not.fully.paid')
-print("Shapes after splitting:")
-print(X_train_scaled.shape)
-print(X_test_scaled.shape)
-print(y_train.shape)
-print(y_test.shape)
-print("--------------------------------")
+    # Splitting the data
+    X_train_scaled, X_test_scaled, y_train, y_test = \
+        split_and_scale(preprocessed_df, target_column='not.fully.paid')
+    print("Shapes after splitting:")
+    print(X_train_scaled.shape)
+    print(X_test_scaled.shape)
+    print(y_train.shape)
+    print(y_test.shape)
+    print("--------------------------------")
 
-# Model and evaluation
-model, results = build_and_evaluate_model(X_train_scaled,
-                                          X_test_scaled,
-                                          y_train,
-                                          y_test)
+    # Model and evaluation
+    model, results = build_and_evaluate_model(X_train_scaled,
+                                            X_test_scaled,
+                                            y_train,
+                                            y_test)
 
-print(f"Accuracy Score: {results['accuracy_score']:.4f}")
-print("Confusion Matrix:")
-print(results['confusion_matrix'])
-print("Classification Report:")
-print(results['classification_report'])
-print(f"F1 Score: {results['f1_score']:.4f}")
+    print(f"Accuracy Score: {results['accuracy_score']:.4f}")
+    print("Confusion Matrix:")
+    print(results['confusion_matrix'])
+    print("Classification Report:")
+    print(results['classification_report'])
+    print(f"F1 Score: {results['f1_score']:.4f}")
