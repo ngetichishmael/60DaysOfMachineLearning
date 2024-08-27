@@ -58,7 +58,55 @@ def load_data(file_path):
         # Return None if there's an error
         return None
 
+def wrangle(df, col, exclude_col=None, skew_threshold=0.75):
+    """
+    Preprocesses the DataFrame by:
+    - transforming the `purpose` column into categorical using get_dummies,
+    - applying transformations to features with high skewness to
+    normalize distributions
 
+    Parameters:
+    df (pd.DataFrame): The DataFrame to preprocess
+    col (str): The column to transform into categorical using get_dummies
+    skew_threshold (float): apply transformation if skewness is above this
+
+    Returns:
+    pd.DataFrame: The preprocessed DataFrame.
+    """
+
+    # Check if `purpose` column exists in the DataFrame
+    if col not in df.columns:
+        raise ValueError(f"Column '{col}' not in df")
+    
+    # encode `purpose` using get_dummies into a categorical column
+    df = pd.get_dummies(df, columns=[col], drop_first=True)
+
+    # Check for skewness in numerical columns
+    numeric_columns = df.select_dtypes(include=[np.number]).columns
+
+    # exclude the target column - it's numerical
+    if exclude_col and exclude_col in numeric_columns:
+        numeric_columns = numeric_columns.drop(exclude_col)
+
+    skewness = df[numeric_columns].skew()
+
+    # Apply transformations to features with high skewness
+    for column in skewness.index:
+        if skewness[column] > skew_threshold:
+            # Apply log transformation if all values are positive
+            if df[column].min() > 0:
+                df[column] = np.log(df[column])
+                print(f"'{column}' log transformed ({skewness[column]:.2f})")
+            else:
+                # Apply square root transformation if values include zero or negative
+                df[column] = np.sqrt(df[column] - df[column].min())
+                print(f"'{column}' square root transformed ({skewness[column]:.2f})")
+    
+    return df
 
 # Call the functions
-load_data("../dataset/loan_data.csv")
+df = load_data("../dataset/loan_data.csv")
+
+preprocessed_df = wrangle(df, col="purpose", exclude_col="not.fully.paid")
+
+print(preprocessed_df.columns)
