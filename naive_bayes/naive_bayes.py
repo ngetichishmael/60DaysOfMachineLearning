@@ -2,6 +2,7 @@
 """Naive bayes implementation using scikit-learn"""
 
 import pandas as pd
+from io import StringIO
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.naive_bayes import GaussianNB
@@ -19,32 +20,35 @@ def load_data(file_path):
     and return the DataFrame.
 
     args:
-        file_path (str): The path to the CSV file.
+        file_path (str): The path to the CSV file
 
     Returns:
-        pd.DataFrame: The DataFrame created from the CSV file.
+        tuple (pd.DataFrame, dict): 
+        - DataFrame created from the CSV file
+        - dictionary of metadata
     """
 
     try:
-        # Load the CSV file into a DataFrame
+        # load the CSV file into a DataFrame
         df = pd.read_csv(file_path)
 
-        # shape of the DataFrame
-        print("Shape of the DataFrame:", df.shape)
+        # perform preliminary checks and gather information
+        shape = df.shape
+        missing_values = df.isnull().sum()
+        data_types = df.dtypes
 
-        # check for missing values
-        print("\nMissing values in each column:")
-        print(df.isnull().sum())
+        # creating a buffer to capture info output
+        buffer = StringIO()
+        df.info(buf=buffer)
+        data_info = buffer.getvalue()
 
-        # column datatypes
-        print("\nData types of each column:")
-        print(df.dtypes)
-
-        # dataframe info
-        print("\nDataFrame Info:")
-        df.info()
-
-        return df
+        # return the DataFrame and a dictionary with the metadata
+        return df, {
+            'shape': shape,
+            'missing_values': missing_values,
+            'data_types': data_types,
+            'data_info': data_info
+        }
 
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' does not exist.")
@@ -168,23 +172,41 @@ def build_and_evaluate_model(X_train, X_test, y_train, y_test):
     # return the trained model and evaluation results
     return model, evaluation_results
 
-# Call the functions
-df = load_data("../dataset/loan_data.csv")
+"""Call the functions"""
+# load the data
+df, metadata = load_data("../dataset/loan_data.csv")
+if df is not None:
+    print("Shape of the DataFrame:", metadata['shape'])
+    print("\nMissing values in each column:")
+    print(metadata['missing_values'])
+    print("\nData types of each column:")
+    print(metadata['data_types'])
+    print("\nDataFrame Info:")
+    print(metadata['data_info'])
+print("--------------------------------")
 
+# preprocess df
 preprocessed_df = wrangle(df, col="purpose")
 
 # Splitting the data
-X_train_scaled, X_test_scaled, y_train, y_test = split_and_scale(preprocessed_df, target_column='not.fully.paid')
+X_train_scaled, X_test_scaled, y_train, y_test = \
+    split_and_scale(preprocessed_df, target_column='not.fully.paid')
+print("Shapes after splitting:")
 print(X_train_scaled.shape)
 print(X_test_scaled.shape)
 print(y_train.shape)
 print(y_test.shape)
+print("--------------------------------")
 
 # Model and evaluation
-model, results = build_and_evaluate_model(X_train_scaled, X_test_scaled, y_train, y_test)
+model, results = build_and_evaluate_model(X_train_scaled,
+                                          X_test_scaled,
+                                          y_train,
+                                          y_test)
+
 print(f"Accuracy Score: {results['accuracy_score']:.4f}")
-print("\nConfusion Matrix:")
+print("Confusion Matrix:")
 print(results['confusion_matrix'])
-print("\nClassification Report:")
+print("Classification Report:")
 print(results['classification_report'])
 print(f"F1 Score: {results['f1_score']:.4f}")
