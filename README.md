@@ -292,7 +292,7 @@
 - **Clustering**
   - K-Means✅ 
   - Mean Shift ✅
-  - DBSCAN
+  - DBSCAN (Density-Based Spatial Clustering Of Applications With Noise)
   - Agglomerative
   - Fuzzy C-Means
 - **Dimensionality Reduction**
