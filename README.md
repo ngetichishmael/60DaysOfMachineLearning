@@ -291,7 +291,7 @@
 ## Unsupervised Learning
 - **Clustering**
   - K-Means✅ 
-  - Mean Shift
+  - Mean Shift ✅
   - DBSCAN
   - Agglomerative
   - Fuzzy C-Means
