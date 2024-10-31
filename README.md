@@ -27,9 +27,9 @@
 
 **Day 5: Intermediate Python - Part 2**✅️ 
 - Dive into lambda functions.
-- Explore inheritance and polymorphism.
-- Learn about error and exception handling.
-- Introduction to Python’s garbage collection and debugging.
+- Explore inheritance and polymorphism. ✔️ 
+- Learn about error and exception handling. ✔️ 
+- Introduction to Python’s garbage collection and debugging. ✔️ 
 
 **Day 6: Advanced Python - Part 1**
 - Learn about decorators and their uses.
