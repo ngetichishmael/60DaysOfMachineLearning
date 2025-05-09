@@ -19,7 +19,7 @@
 - Explore break and continue statements.
 - Introduction to functions and their definitions.
 
-**Day 4: Intermediate Python - Part 1** ✅️ 
+**Day 4: Intermediate Python - Part 1** ✅️ ✅️ 
 - Learn about first-class functions and closures.
 - Understand global and non-local variables.
 - Explore the use of magic methods and tuple unpacking.
